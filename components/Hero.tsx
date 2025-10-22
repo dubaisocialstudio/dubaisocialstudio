@@ -58,14 +58,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4"
+              className="flex justify-center px-4"
             >
               <a href="#contact" className="btn-primary inline-flex items-center justify-center gap-2 py-4 px-8 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
                 Get Started
                 <ArrowRight size={20} />
-              </a>
-              <a href="#portfolio" className="btn-secondary inline-flex items-center justify-center py-4 px-8 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
-                View Our Work
               </a>
             </motion.div>
 
