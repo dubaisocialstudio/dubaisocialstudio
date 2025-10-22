@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Mail, MapPin, Send, Instagram, Camera, Target, Palette, Users } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ export default function Contact() {
     service: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const services = [
     { id: 'content', label: 'Content Creation', icon: Camera },
@@ -21,11 +24,46 @@ export default function Contact() {
     { id: 'all', label: 'All Services', icon: Camera }
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We\'ll get back to you soon.')
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // EmailJS configuration - you'll need to replace these with your actual values
+      const serviceId = 'YOUR_SERVICE_ID' // Replace with your EmailJS service ID
+      const templateId = 'YOUR_TEMPLATE_ID' // Replace with your EmailJS template ID
+      const publicKey = 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+
+      // For now, we'll simulate the email sending
+      // Uncomment the lines below once you have EmailJS set up
+      
+      // await emailjs.send(serviceId, templateId, {
+      //   from_name: formData.name,
+      //   from_email: formData.email,
+      //   phone: formData.phone,
+      //   service: formData.service,
+      //   message: formData.message,
+      //   to_email: 'hello@dubaisocialstudio.com' // Your email
+      // }, publicKey)
+
+      // Simulate API call for now
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      setSubmitStatus('success')
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      })
+    } catch (error) {
+      console.error('Error sending email:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -155,11 +193,46 @@ export default function Contact() {
                 
                 <button
                   type="submit"
-                  className="w-full bg-cream-50 hover:bg-cream-100 text-chocolate-600 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base sm:text-lg"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base sm:text-lg ${
+                    isSubmitting 
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                      : 'bg-cream-50 hover:bg-cream-100 text-chocolate-600'
+                  }`}
                 >
-                  Send Message
-                  <Send size={20} />
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-500"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send size={20} />
+                    </>
+                  )}
                 </button>
+                
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 bg-green-50 border border-green-200 rounded-2xl text-green-700 text-center"
+                  >
+                    ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                  </motion.div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-700 text-center"
+                  >
+                    ❌ Sorry, there was an error sending your message. Please try again or contact us directly.
+                  </motion.div>
+                )}
               </form>
             </div>
           </motion.div>
