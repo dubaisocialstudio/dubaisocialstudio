@@ -9,7 +9,7 @@ export default function Hero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0.8])
 
   return (
-    <section className="min-h-screen flex items-start sm:items-center justify-center bg-gradient-to-br from-cream-50 to-warm-100 relative overflow-hidden pt-8 sm:pt-0">
+    <section className="min-h-screen flex items-start sm:items-center justify-center bg-gradient-to-br from-cream-50 to-warm-100 relative overflow-hidden pt-16 sm:pt-0">
       <motion.div 
         style={{ y, opacity }}
         className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -27,7 +27,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-4 sm:mb-8 md:mb-12"
+              className="mb-6 sm:mb-8 md:mb-12"
             >
               <img 
                 src="/LOGO.png" 
