@@ -27,12 +27,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mb-12"
+              className="mb-8 sm:mb-12"
             >
               <img 
                 src="/LOGO.png" 
                 alt="Dubai Social Studio" 
-                className="mx-auto h-16 md:h-20 lg:h-24 w-auto"
+                className="mx-auto h-12 sm:h-16 md:h-20 lg:h-24 w-auto"
               />
             </motion.div>
 
@@ -40,7 +40,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-chocolate-600 mb-8 leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-chocolate-600 mb-6 sm:mb-8 leading-tight px-2"
             >
               We make your brand look as good as it deserves
             </motion.h2>
@@ -49,7 +49,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto px-4"
             >
               In today's world, your Instagram is your storefront, the first impression your clients get. We create content that elevates brands to their next level with modern, elegant, and visually consistent storytelling.
             </motion.p>
@@ -58,35 +58,35 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4"
             >
-              <a href="#contact" className="btn-primary inline-flex items-center gap-2">
+              <a href="#contact" className="btn-primary inline-flex items-center justify-center gap-2 py-4 px-8 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
                 Get Started
                 <ArrowRight size={20} />
               </a>
-              <a href="#portfolio" className="btn-secondary">
+              <a href="#portfolio" className="btn-secondary inline-flex items-center justify-center py-4 px-8 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
                 View Our Work
               </a>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats - Mobile optimized */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="grid grid-cols-3 gap-12 mt-16 pt-12 border-t border-cream-200 max-w-2xl mx-auto"
+              className="grid grid-cols-3 gap-4 sm:gap-8 lg:gap-12 mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-cream-200 max-w-2xl mx-auto px-4"
             >
               <div className="text-center">
-                <div className="text-3xl font-bold text-chocolate-600">50+</div>
-                <div className="text-sm text-gray-600 mt-1">Brands Elevated</div>
+                <div className="text-2xl sm:text-3xl font-bold text-chocolate-600">50+</div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-1">Brands Elevated</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-chocolate-600">1000+</div>
-                <div className="text-sm text-gray-600 mt-1">Content Pieces</div>
+                <div className="text-2xl sm:text-3xl font-bold text-chocolate-600">1000+</div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-1">Content Pieces</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-chocolate-600">2</div>
-                <div className="text-sm text-gray-600 mt-1">Creative Minds</div>
+                <div className="text-2xl sm:text-3xl font-bold text-chocolate-600">2</div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-1">Creative Minds</div>
               </div>
             </motion.div>
           </motion.div>

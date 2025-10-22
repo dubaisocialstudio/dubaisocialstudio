@@ -54,17 +54,17 @@ export default function Services() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-chocolate-600 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-chocolate-600 mb-4 px-4">
             Our Services
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
             We offer comprehensive solutions to elevate your brand's online presence and create content that truly connects with your audience.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -80,29 +80,30 @@ export default function Services() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className="bg-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-cream-200/50"
+              whileTap={{ scale: 0.98 }}
+              className="bg-white rounded-3xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-cream-200/50 active:scale-95"
             >
               <motion.div 
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
-                className="w-16 h-16 bg-cream-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg border border-cream-200/50"
+                className="w-12 h-12 sm:w-16 sm:h-16 bg-cream-50 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg border border-cream-200/50"
               >
-                <service.icon className="text-chocolate-600" size={28} />
+                <service.icon className="text-chocolate-600" size={20} />
               </motion.div>
               
-              <h3 className="text-2xl font-semibold text-chocolate-600 mb-4">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-chocolate-600 mb-3 sm:mb-4 leading-tight">
                 {service.title}
               </h3>
               
-              <p className="text-gray-600 mb-6 text-base leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                 {service.description}
               </p>
               
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600 bg-cream-50 rounded-full px-4 py-2 border border-cream-200/50">
-                    <div className="w-2 h-2 bg-chocolate-600 rounded-full mr-3"></div>
-                    {feature}
+                  <li key={featureIndex} className="flex items-center text-xs sm:text-sm text-gray-600 bg-cream-50 rounded-full px-3 sm:px-4 py-2 border border-cream-200/50">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-chocolate-600 rounded-full mr-2 sm:mr-3 flex-shrink-0"></div>
+                    <span className="truncate">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -114,9 +115,9 @@ export default function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-12"
         >
-          <a href="#contact" className="bg-cream-50 hover:bg-cream-100 text-chocolate-600 px-8 py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <a href="#contact" className="bg-cream-50 hover:bg-cream-100 text-chocolate-600 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl inline-block text-base sm:text-lg">
             Get Started Today
           </a>
         </motion.div>
