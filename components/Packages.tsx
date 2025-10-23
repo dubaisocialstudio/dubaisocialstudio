@@ -70,7 +70,7 @@ export default function Packages() {
 
   return (
     <section id="packages" className="section-padding bg-gradient-to-br from-cream-50 to-warm-100">
-      <div className="w-full">
+      <div className="container-custom">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -87,109 +87,8 @@ export default function Packages() {
           </p>
         </motion.div>
 
-        <div className="md:grid md:grid-cols-3 md:gap-4 md:max-w-5xl md:mx-auto md:px-4">
-          {/* Mobile: Horizontal scroll container */}
-          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {packages.map((pkg, index) => {
-              const IconComponent = pkg.icon
-              return (
-                <motion.div
-                  key={pkg.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  className={`relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[280px] snap-center flex-shrink-0 ${
-                    index === 0 ? 'ml-4' : ''
-                  } ${
-                    index === packages.length - 1 ? 'mr-4' : ''
-                  }`}
-                >
-                  <div className="p-4 sm:p-6">
-                    <div className="flex items-center justify-center mb-3">
-                      <div className="p-2 rounded-xl bg-cream-50">
-                        <IconComponent size={20} className="text-chocolate-600" />
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-lg sm:text-xl font-serif font-bold text-chocolate-600 text-center mb-2">
-                      {pkg.name}
-                    </h3>
-                    
-                    <p className="text-xs sm:text-sm text-gray-600 text-center mb-4">
-                      {pkg.description}
-                    </p>
-
-                    <div className="text-center mb-4">
-                      <div className="flex items-baseline justify-center">
-                        <span className="text-2xl sm:text-3xl font-bold text-chocolate-600">
-                          {pkg.price}
-                        </span>
-                        <span className="text-gray-500 ml-1 text-sm">
-                          {pkg.period}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                    <ul className="space-y-2 mb-6 flex-1">
-                      {pkg.features.map((feature, featureIndex) => (
-                        <motion.li
-                          key={featureIndex}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: (index * 0.15) + (featureIndex * 0.05) }}
-                          viewport={{ once: true, margin: "-50px" }}
-                          className="flex items-start gap-2"
-                        >
-                          <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-xs sm:text-sm text-gray-700">
-                            {feature}
-                          </span>
-                        </motion.li>
-                      ))}
-                    </ul>
-
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => {
-                        // Scroll to contact form
-                        const contactSection = document.getElementById('contact')
-                        if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' })
-                        }
-                        
-                        // Map package to correct service ID
-                        const serviceMapping = {
-                          'starter': 'starter',      // Starter → Starter Package
-                          'premium': 'premium',     // Premium → Premium Package  
-                          'custom': 'custom'        // Custom → Custom Package
-                        }
-                        
-                        // Pre-fill the service field in the contact form
-                        setTimeout(() => {
-                          const serviceSelect = document.getElementById('service') as HTMLSelectElement
-                          if (serviceSelect) {
-                            serviceSelect.value = serviceMapping[pkg.id as keyof typeof serviceMapping]
-                            // Trigger change event to update form state
-                            serviceSelect.dispatchEvent(new Event('change', { bubbles: true }))
-                          }
-                        }, 500) // Small delay to ensure form is visible
-                      }}
-                      className="w-full bg-cream-50 hover:bg-cream-100 text-chocolate-600 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg text-sm sm:text-base mt-auto"
-                    >
-                      {pkg.id === 'custom' ? 'Get Custom Quote' : 'Get Started'}
-                    </motion.button>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
-
-          {/* Desktop: Grid layout */}
-          <div className="hidden md:grid md:grid-cols-3 md:gap-4">
+        {/* Mobile: Horizontal scroll container */}
+        <div className="md:hidden flex gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {packages.map((pkg, index) => {
             const IconComponent = pkg.icon
             return (
@@ -199,9 +98,8 @@ export default function Packages() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true, margin: "-50px" }}
-                className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 w-[calc(100vw-2rem)] flex-shrink-0 snap-center"
               >
-
                 <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-center mb-3">
                     <div className="p-2 rounded-xl bg-cream-50">
@@ -283,7 +181,102 @@ export default function Packages() {
               </motion.div>
             )
           })}
-          </div>
+        </div>
+
+        {/* Desktop: Grid layout */}
+        <div className="hidden md:grid md:grid-cols-3 md:gap-4 md:max-w-5xl md:mx-auto">
+          {packages.map((pkg, index) => {
+            const IconComponent = pkg.icon
+            return (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-center justify-center mb-3">
+                    <div className="p-2 rounded-xl bg-cream-50">
+                      <IconComponent size={20} className="text-chocolate-600" />
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-chocolate-600 text-center mb-2">
+                    {pkg.name}
+                  </h3>
+                  
+                  <p className="text-xs sm:text-sm text-gray-600 text-center mb-4">
+                    {pkg.description}
+                  </p>
+
+                  <div className="text-center mb-4">
+                    <div className="flex items-baseline justify-center">
+                      <span className="text-2xl sm:text-3xl font-bold text-chocolate-600">
+                        {pkg.price}
+                      </span>
+                      <span className="text-gray-500 ml-1 text-sm">
+                        {pkg.period}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-6 flex-1 flex flex-col">
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {pkg.features.map((feature, featureIndex) => (
+                      <motion.li
+                        key={featureIndex}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: (index * 0.15) + (featureIndex * 0.05) }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="flex items-start gap-2"
+                      >
+                        <Check size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm text-gray-700">
+                          {feature}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      // Scroll to contact form
+                      const contactSection = document.getElementById('contact')
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth' })
+                      }
+                      
+                      // Map package to correct service ID
+                      const serviceMapping = {
+                        'starter': 'starter',      // Starter → Starter Package
+                        'premium': 'premium',     // Premium → Premium Package  
+                        'custom': 'custom'        // Custom → Custom Package
+                      }
+                      
+                      // Pre-fill the service field in the contact form
+                      setTimeout(() => {
+                        const serviceSelect = document.getElementById('service') as HTMLSelectElement
+                        if (serviceSelect) {
+                          serviceSelect.value = serviceMapping[pkg.id as keyof typeof serviceMapping]
+                          // Trigger change event to update form state
+                          serviceSelect.dispatchEvent(new Event('change', { bubbles: true }))
+                        }
+                      }, 500) // Small delay to ensure form is visible
+                    }}
+                    className="w-full bg-cream-50 hover:bg-cream-100 text-chocolate-600 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg text-sm sm:text-base mt-auto"
+                  >
+                    {pkg.id === 'custom' ? 'Get Custom Quote' : 'Get Started'}
+                  </motion.button>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* Additional Info */}
@@ -294,7 +287,7 @@ export default function Packages() {
           viewport={{ once: true, margin: "-100px" }}
           className="mt-8 sm:mt-12 text-center"
         >
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 max-w-3xl mx-4 md:mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 max-w-3xl mx-auto">
             <h3 className="text-base sm:text-lg font-serif font-bold text-chocolate-600 mb-3">
               All Packages Include
             </h3>
