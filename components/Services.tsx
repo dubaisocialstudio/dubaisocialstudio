@@ -64,7 +64,45 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Mobile: Horizontal scroll container */}
+        <div className="md:hidden">
+          <div className="flex gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {services.map((service, index) => (
+              <div
+                key={service.title}
+                className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 w-80 flex-shrink-0 snap-center"
+              >
+                <div className="p-6">
+                  <div className="w-12 h-12 bg-cream-50 rounded-xl flex items-center justify-center mb-4">
+                    <service.icon className="text-chocolate-600" size={20} />
+                  </div>
+                  
+                  <h3 className="text-lg font-semibold text-chocolate-600 mb-3 leading-tight">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-chocolate-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-xs text-gray-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Grid layout */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
