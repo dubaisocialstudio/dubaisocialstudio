@@ -2,11 +2,13 @@
 
 import { motion, useInView } from 'framer-motion'
 import { Camera, Target, Palette, Users, Monitor, Code } from 'lucide-react'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 export default function Services() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const services = [
     {
@@ -46,6 +48,31 @@ export default function Services() {
       features: ['Custom Development', 'Web Applications', 'Mobile Apps', 'Business Solutions']
     }
   ]
+
+  // Auto-scroll functionality for desktop
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % (services.length - 2) // -2 because we show 3 cards at a time
+        return nextIndex
+      })
+    }, 4000) // Change every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [services.length])
+
+  // Scroll to current index
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const cardWidth = 400 // Approximate card width + gap
+      scrollContainerRef.current.scrollTo({
+        left: currentIndex * cardWidth,
+        behavior: 'smooth'
+      })
+    }
+  }, [currentIndex])
 
   return (
     <section id="services" className="section-padding bg-white relative overflow-hidden">
@@ -101,52 +128,77 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Desktop: Grid layout */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 sm:gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              whileHover={{ 
-                y: -10,
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-white rounded-3xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-cream-200/50 active:scale-95"
-            >
-              <motion.div 
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="w-12 h-12 sm:w-16 sm:h-16 bg-cream-50 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg border border-cream-200/50"
+        {/* Desktop: Auto-scrolling carousel */}
+        <div className="hidden md:block">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto scrollbar-hide"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none',
+              scrollBehavior: 'smooth'
+            }}
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-cream-200/50 active:scale-95 flex-shrink-0 w-96"
               >
-                <service.icon className="text-chocolate-600" size={20} />
+                <motion.div 
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-16 h-16 bg-cream-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg border border-cream-200/50"
+                >
+                  <service.icon className="text-chocolate-600" size={24} />
+                </motion.div>
+                
+                <h3 className="text-2xl font-semibold text-chocolate-600 mb-4 leading-tight">
+                  {service.title}
+                </h3>
+                
+                <p className="text-base text-gray-600 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-600 bg-cream-50 rounded-full px-4 py-2 border border-cream-200/50">
+                      <div className="w-2 h-2 bg-chocolate-600 rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="truncate">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
-              
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-chocolate-600 mb-3 sm:mb-4 leading-tight">
-                {service.title}
-              </h3>
-              
-              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              
-              <ul className="space-y-2 sm:space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-xs sm:text-sm text-gray-600 bg-cream-50 rounded-full px-3 sm:px-4 py-2 border border-cream-200/50">
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-chocolate-600 rounded-full mr-2 sm:mr-3 flex-shrink-0"></div>
-                    <span className="truncate">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+          
+          {/* Progress indicators */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {Array.from({ length: services.length - 2 }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-chocolate-600 scale-125' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         <motion.div
