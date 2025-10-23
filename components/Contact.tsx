@@ -30,25 +30,20 @@ export default function Contact() {
     setSubmitStatus('idle')
 
     try {
-      // EmailJS configuration - you'll need to replace these with your actual values
-      const serviceId = 'YOUR_SERVICE_ID' // Replace with your EmailJS service ID
-      const templateId = 'YOUR_TEMPLATE_ID' // Replace with your EmailJS template ID
-      const publicKey = 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      // EmailJS configuration
+      const serviceId = 'service_vzcusbp'
+      const templateId = 'template_c1sg6wk'
+      const publicKey = 'pJFpZTDds26mieMbG'
 
-      // For now, we'll simulate the email sending
-      // Uncomment the lines below once you have EmailJS set up
-      
-      // await emailjs.send(serviceId, templateId, {
-      //   from_name: formData.name,
-      //   from_email: formData.email,
-      //   phone: formData.phone,
-      //   service: formData.service,
-      //   message: formData.message,
-      //   to_email: 'hello@dubaisocialstudio.com' // Your email
-      // }, publicKey)
-
-      // Simulate API call for now
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        to_email: 'hello@dubaisocialstudio.com'
+      }, publicKey)
       
       setSubmitStatus('success')
       setFormData({
