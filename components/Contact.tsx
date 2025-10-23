@@ -112,7 +112,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-cream-50/50 text-base"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-white text-base"
                       placeholder="Your full name"
                     />
                   </div>
@@ -128,7 +128,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-cream-50/50 text-base"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-white text-base"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -144,7 +144,7 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-cream-50/50 text-base"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-white text-base"
                     placeholder="+971 XX XXX XXXX"
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function Contact() {
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-cream-50/50 text-base"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-chocolate-600 focus:border-transparent transition-all duration-300 bg-white text-base"
                   >
                     <option value="">Select a service</option>
                     {services.map((service) => (
