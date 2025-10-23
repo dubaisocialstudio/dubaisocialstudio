@@ -89,7 +89,7 @@ export default function Packages() {
 
         <div className="md:grid md:grid-cols-3 md:gap-4 md:max-w-5xl md:mx-auto">
           {/* Mobile: Horizontal scroll container */}
-          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {packages.map((pkg, index) => {
               const IconComponent = pkg.icon
               return (
@@ -99,7 +99,11 @@ export default function Packages() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[280px] snap-center"
+                  className={`relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[280px] snap-center flex-shrink-0 ${
+                    index === 0 ? 'ml-4' : ''
+                  } ${
+                    index === packages.length - 1 ? 'mr-4' : ''
+                  }`}
                 >
                   <div className="p-4 sm:p-6">
                     <div className="flex items-center justify-center mb-3">
