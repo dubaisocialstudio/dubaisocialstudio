@@ -2,13 +2,24 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { Check, Star, Zap, Crown } from 'lucide-react'
 
 export default function Packages() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  // Set default scroll position to Premium package (index 1)
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const cardWidth = 320 // Card width
+      const gap = 16 // Gap between cards
+      const totalCardWidth = cardWidth + gap
+      const premiumIndex = 1 // Premium is at index 1
+      scrollContainerRef.current.scrollLeft = premiumIndex * totalCardWidth
+    }
+  }, [])
 
   const packages = [
     {
@@ -98,12 +109,8 @@ export default function Packages() {
             {packages.map((pkg, index) => {
               const IconComponent = pkg.icon
               return (
-                <motion.div
+                <div
                   key={pkg.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  viewport={{ once: true, margin: "-50px" }}
                   className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 w-80 flex-shrink-0 snap-center"
                 >
                 <div className="p-4 sm:p-6">
@@ -184,7 +191,7 @@ export default function Packages() {
                     {pkg.id === 'custom' ? 'Get Custom Quote' : 'Get Started'}
                   </motion.button>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
           </div>
