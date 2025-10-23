@@ -13,7 +13,7 @@ export default function Packages() {
   // Set default scroll position to Premium package (index 1)
   useEffect(() => {
     if (scrollContainerRef.current) {
-      const cardWidth = 320 // Card width
+      const cardWidth = window.innerWidth // Full screen width
       const gap = 16 // Gap between cards
       const totalCardWidth = cardWidth + gap
       const premiumIndex = 1 // Premium is at index 1
@@ -103,7 +103,7 @@ export default function Packages() {
         <div className="md:hidden">
           <div 
             ref={scrollContainerRef}
-            className="flex gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide" 
+            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" 
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {packages.map((pkg, index) => {
@@ -111,7 +111,7 @@ export default function Packages() {
               return (
                 <div
                   key={pkg.id}
-                  className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 w-80 flex-shrink-0 snap-center"
+                  className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300 w-screen flex-shrink-0 snap-center"
                 >
                 <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-center mb-3">
