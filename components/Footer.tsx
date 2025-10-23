@@ -54,6 +54,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="#packages" className="text-chocolate-600/80 hover:text-chocolate-600 transition-colors text-sm sm:text-base block py-1">
+                  Packages
+                </Link>
+              </li>
+              <li>
                 <Link href="#contact" className="text-chocolate-600/80 hover:text-chocolate-600 transition-colors text-sm sm:text-base block py-1">
                   Contact
                 </Link>

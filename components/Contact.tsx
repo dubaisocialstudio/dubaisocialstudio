@@ -17,6 +17,9 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const services = [
+    { id: 'starter', label: 'Starter Package (4 Reels, 10 Photos)', icon: Camera },
+    { id: 'premium', label: 'Premium Package (8 Reels, 20 Photos)', icon: Target },
+    { id: 'custom', label: 'Custom Package', icon: Palette },
     { id: 'content', label: 'Content Creation', icon: Camera },
     { id: 'strategy', label: 'Instagram & Social Media Strategy', icon: Target },
     { id: 'brand', label: 'Brand Aesthetic & Storytelling', icon: Palette },
@@ -86,11 +89,11 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+        <div className="max-w-2xl mx-auto">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -229,70 +232,6 @@ export default function Contact() {
                   </motion.div>
                 )}
               </form>
-            </div>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-6 sm:space-y-8"
-          >
-            <div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-chocolate-600 mb-6">
-                Get in touch
-              </h3>
-              
-              <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cream-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-cream-200/50">
-                    <Mail className="text-chocolate-600" size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-chocolate-600 mb-1 text-sm sm:text-base">Email</h4>
-                    <p className="text-gray-600 text-sm sm:text-base">hello@dubaisocialstudio.com</p>
-                    <p className="text-xs sm:text-sm text-gray-500">We'll respond within 24 hours</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cream-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-cream-200/50">
-                    <MapPin className="text-chocolate-600" size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-chocolate-600 mb-1 text-sm sm:text-base">Location</h4>
-                    <p className="text-gray-600 text-sm sm:text-base">Dubai, United Arab Emirates</p>
-                    <p className="text-xs sm:text-sm text-gray-500">Serving clients worldwide</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg border border-cream-200/50">
-              <h4 className="font-semibold text-chocolate-600 mb-4 text-base sm:text-lg">Follow us</h4>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://instagram.com/dubaisocialstudio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-chocolate-600 hover:text-chocolate-700 transition-colors bg-cream-50 rounded-full px-3 sm:px-4 py-2 active:scale-95"
-                >
-                  <Instagram size={18} />
-                  <span className="font-medium text-sm sm:text-base">@dubaisocialstudio</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Response */}
-            <div className="bg-cream-50 rounded-2xl p-4 sm:p-6 shadow-2xl border border-cream-200/50">
-              <h4 className="font-semibold mb-3 text-base sm:text-lg text-chocolate-600">Quick Response Guarantee</h4>
-              <p className="text-xs sm:text-sm text-chocolate-600/80 leading-relaxed">
-                We understand the importance of timely communication. Expect a response within 24 hours, 
-                and for urgent projects, we're just a phone call away.
-              </p>
             </div>
           </motion.div>
         </div>

@@ -124,14 +124,23 @@
   
   /* Mobile app-like touch feedback */
   @media (max-width: 768px) {
-    .touch-feedback {
-      transition: all 0.1s ease-out;
-    }
-    
-    .touch-feedback:active {
-      transform: scale(0.98);
-      opacity: 0.8;
-    }
+  .touch-feedback {
+    transition: all 0.1s ease-out;
+  }
+  
+  .touch-feedback:active {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
   }
   
   /* Improved mobile typography */
