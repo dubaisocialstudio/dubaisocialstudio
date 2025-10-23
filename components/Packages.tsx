@@ -2,35 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { Check, Star, Zap, Crown, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useRef } from 'react'
+import { Check, Star, Zap, Crown } from 'lucide-react'
 
 export default function Packages() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const scrollToPackage = (index: number) => {
-    if (scrollContainerRef.current) {
-      const cardWidth = 320 // Card width + gap
-      scrollContainerRef.current.scrollTo({
-        left: index * cardWidth,
-        behavior: 'smooth'
-      })
-      setCurrentIndex(index)
-    }
-  }
-
-  const scrollNext = () => {
-    const nextIndex = Math.min(currentIndex + 1, packages.length - 1)
-    scrollToPackage(nextIndex)
-  }
-
-  const scrollPrev = () => {
-    const prevIndex = Math.max(currentIndex - 1, 0)
-    scrollToPackage(prevIndex)
-  }
 
   const packages = [
     {
@@ -110,48 +88,8 @@ export default function Packages() {
           </p>
         </motion.div>
 
-        {/* Mobile: Horizontal scroll container with navigation */}
-        <div className="md:hidden relative">
-          {/* Navigation Arrows */}
-          <div className="flex justify-between items-center mb-4 px-4">
-            <button
-              onClick={scrollPrev}
-              disabled={currentIndex === 0}
-              className={`p-2 rounded-full transition-all duration-200 ${
-                currentIndex === 0 
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                  : 'bg-cream-50 text-chocolate-600 hover:bg-cream-100 active:scale-95'
-              }`}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            
-            <div className="flex gap-2">
-              {packages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollToPackage(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    index === currentIndex ? 'bg-chocolate-600' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
-            
-            <button
-              onClick={scrollNext}
-              disabled={currentIndex === packages.length - 1}
-              className={`p-2 rounded-full transition-all duration-200 ${
-                currentIndex === packages.length - 1 
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                  : 'bg-cream-50 text-chocolate-600 hover:bg-cream-100 active:scale-95'
-              }`}
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
-
-          {/* Cards Container */}
+        {/* Mobile: Horizontal scroll container */}
+        <div className="md:hidden">
           <div 
             ref={scrollContainerRef}
             className="flex gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide" 
