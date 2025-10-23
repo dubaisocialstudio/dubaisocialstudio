@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect } from 'react'
-import { Check, Star, Zap, Crown } from 'lucide-react'
+import { Check, Star, Zap, Crown, Monitor } from 'lucide-react'
 
 export default function Packages() {
   const ref = useRef(null)
@@ -55,6 +55,26 @@ export default function Packages() {
         'Analytics & performance reports',
         'Priority support',
         'Monthly strategy calls'
+      ]
+    },
+    {
+      id: 'website',
+      name: 'Website Design',
+      price: 'AED 5,000',
+      period: 'From',
+      description: 'Professional website design',
+      icon: Monitor,
+      features: [
+        'Custom website design',
+        'Responsive mobile-friendly layout',
+        'SEO optimization',
+        'Fast loading performance',
+        'Contact forms integration',
+        'Social media integration',
+        'Google Analytics setup',
+        'Basic content management',
+        'Domain & hosting guidance',
+        '3 months support included'
       ]
     },
     {
@@ -172,6 +192,7 @@ export default function Packages() {
                       const serviceMapping = {
                         'starter': 'starter',      // Starter → Starter Package
                         'premium': 'premium',     // Premium → Premium Package  
+                        'website': 'website',     // Website → Website Design Package
                         'custom': 'custom'        // Custom → Custom Package
                       }
                       
@@ -197,7 +218,7 @@ export default function Packages() {
         </div>
 
         {/* Desktop: Grid layout */}
-        <div className="hidden md:grid md:grid-cols-3 md:gap-4 md:max-w-5xl md:mx-auto">
+        <div className="hidden md:grid md:grid-cols-4 md:gap-4 md:max-w-7xl md:mx-auto">
           {packages.map((pkg, index) => {
             const IconComponent = pkg.icon
             return (
@@ -269,6 +290,7 @@ export default function Packages() {
                       const serviceMapping = {
                         'starter': 'starter',      // Starter → Starter Package
                         'premium': 'premium',     // Premium → Premium Package  
+                        'website': 'website',     // Website → Website Design Package
                         'custom': 'custom'        // Custom → Custom Package
                       }
                       
