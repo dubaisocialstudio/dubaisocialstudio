@@ -70,7 +70,7 @@ export default function Packages() {
 
   return (
     <section id="packages" className="section-padding bg-gradient-to-br from-cream-50 to-warm-100">
-      <div className="container-custom">
+      <div className="w-full">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -87,7 +87,7 @@ export default function Packages() {
           </p>
         </motion.div>
 
-        <div className="md:grid md:grid-cols-3 md:gap-4 md:max-w-5xl md:mx-auto">
+        <div className="md:grid md:grid-cols-3 md:gap-4 md:max-w-5xl md:mx-auto md:px-4">
           {/* Mobile: Horizontal scroll container */}
           <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {packages.map((pkg, index) => {
@@ -294,7 +294,7 @@ export default function Packages() {
           viewport={{ once: true, margin: "-100px" }}
           className="mt-8 sm:mt-12 text-center"
         >
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 max-w-3xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 max-w-3xl mx-4 md:mx-auto">
             <h3 className="text-base sm:text-lg font-serif font-bold text-chocolate-600 mb-3">
               All Packages Include
             </h3>
