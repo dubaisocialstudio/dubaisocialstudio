@@ -111,7 +111,7 @@ export default function Packages() {
               return (
                 <div
                   key={pkg.id}
-                  className="relative bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 w-80 flex-shrink-0 snap-center"
+                  className="relative bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 w-80 flex-shrink-0 snap-center"
                 >
                 <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-center mb-3">
