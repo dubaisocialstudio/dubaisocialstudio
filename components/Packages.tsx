@@ -1,7 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import { Check, Star, Zap, Crown } from 'lucide-react'
 
@@ -81,8 +80,8 @@ export default function Packages() {
   ]
 
   return (
-    <section id="packages" className="section-padding bg-gradient-to-br from-cream-50 to-warm-100">
-      <div className="container-custom">
+    <section id="packages" className="section-padding bg-white relative overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -94,7 +93,7 @@ export default function Packages() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-chocolate-600 mb-4 px-4">
             Choose Your Package
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto px-4">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
             Flexible packages designed to grow with your business. From getting started to full-scale management.
           </p>
         </motion.div>
