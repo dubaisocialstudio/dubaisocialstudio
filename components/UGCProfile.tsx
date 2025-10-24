@@ -3,192 +3,38 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
-  Heart, 
-  MessageCircle, 
-  Share2, 
-  Bookmark, 
-  MoreHorizontal,
   Instagram,
   Mail,
-  Phone,
-  MapPin,
-  Calendar,
-  Users,
-  Eye,
-  Star,
-  CheckCircle,
-  Camera,
-  Video,
-  Image as ImageIcon
+  Users
 } from 'lucide-react'
 
 const UGCProfile = () => {
-  const [activeTab, setActiveTab] = useState('posts')
-  const [selectedPost, setSelectedPost] = useState<any>(null)
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null)
 
-  // Sample UGC creator data
+  // Creator data
   const creator = {
     name: "Lorena Roman",
     username: "@lorenarsan",
-    bio: "UGC Creator & Content Strategist | Helping brands tell their story through authentic content | Dubai-based",
-    avatar: "/api/placeholder/150/150",
-    cover: "/api/placeholder/800/300",
-    verified: true,
-    location: "Dubai, UAE",
-    website: "lorenaugc.com",
-    joinedDate: "January 2023",
     stats: {
       followers: "103.2K",
-      following: "892",
-      posts: "156",
       engagement: "4.2%",
       reach: "1.1M",
       impressions: "70.7K"
-    },
-    categories: ["Lifestyle", "Fashion", "Beauty", "Wellness", "Food", "Travel"],
-    rates: {
-      posts: "AED 800-1,200",
-      reels: "AED 1,500-2,500", 
-      stories: "AED 300-500",
-      collaborations: "AED 2,000-5,000"
     }
   }
 
   // Portfolio photos
   const posts = [
-    {
-      id: 1,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/1.JPG",
-      title: "Brand Collaboration",
-      brand: "Lifestyle Brand",
-      engagement: { likes: 1240, comments: 89, shares: 23 },
-      date: "2 days ago",
-      category: "Lifestyle"
-    },
-    {
-      id: 2,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/2.JPG",
-      title: "Content Creation",
-      brand: "Fashion Brand",
-      engagement: { likes: 892, comments: 45, shares: 12 },
-      date: "5 days ago",
-      category: "Fashion"
-    },
-    {
-      id: 3,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/3.JPG",
-      title: "UGC Content",
-      brand: "Beauty Brand",
-      engagement: { likes: 2103, comments: 156, shares: 67 },
-      date: "1 week ago",
-      category: "Beauty"
-    },
-    {
-      id: 4,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/4.JPG",
-      title: "Brand Partnership",
-      brand: "Wellness Brand",
-      engagement: { likes: 756, comments: 34, shares: 18 },
-      date: "1 week ago",
-      category: "Wellness"
-    },
-    {
-      id: 5,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/5.JPG",
-      title: "Content Strategy",
-      brand: "Food Brand",
-      engagement: { likes: 1890, comments: 98, shares: 45 },
-      date: "2 weeks ago",
-      category: "Food"
-    },
-    {
-      id: 6,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/6.JPG",
-      title: "Travel Content",
-      brand: "Travel Brand",
-      engagement: { likes: 3245, comments: 234, shares: 89 },
-      date: "2 weeks ago",
-      category: "Travel"
-    },
-    {
-      id: 7,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/7.JPG",
-      title: "Lifestyle Content",
-      brand: "Lifestyle Brand",
-      engagement: { likes: 1456, comments: 78, shares: 34 },
-      date: "3 weeks ago",
-      category: "Lifestyle"
-    },
-    {
-      id: 8,
-      type: 'post',
-      thumbnail: "/images/lorena-portfolio/8.JPG",
-      title: "Brand Campaign",
-      brand: "Fashion Brand",
-      engagement: { likes: 2789, comments: 123, shares: 56 },
-      date: "3 weeks ago",
-      category: "Fashion"
-    }
+    { id: 1, type: 'post', thumbnail: "/images/lorena-portfolio/1.JPG", title: "Brand Collaboration" },
+    { id: 2, type: 'post', thumbnail: "/images/lorena-portfolio/2.JPG", title: "Content Creation" },
+    { id: 3, type: 'post', thumbnail: "/images/lorena-portfolio/3.JPG", title: "UGC Content" },
+    { id: 4, type: 'post', thumbnail: "/images/lorena-portfolio/4.JPG", title: "Brand Partnership" },
+    { id: 5, type: 'post', thumbnail: "/images/lorena-portfolio/5.JPG", title: "Content Strategy" },
+    { id: 6, type: 'post', thumbnail: "/images/lorena-portfolio/6.JPG", title: "Travel Content" },
+    { id: 7, type: 'post', thumbnail: "/images/lorena-portfolio/7.JPG", title: "Lifestyle Content" },
+    { id: 8, type: 'post', thumbnail: "/images/lorena-portfolio/8.JPG", title: "Brand Campaign" }
   ]
 
-  // Reels content
-  const reels = [
-    {
-      id: 1,
-      type: 'reel',
-      thumbnail: "/images/lorena-reels/1.MOV",
-      title: "UGC Reel Content",
-      brand: "Brand Collaboration",
-      engagement: { likes: 1890, comments: 98, shares: 45 },
-      date: "3 days ago",
-      category: "Lifestyle"
-    },
-    {
-      id: 2,
-      type: 'reel',
-      thumbnail: "/images/lorena-reels/2.MOV",
-      title: "Content Creation Reel",
-      brand: "Fashion Brand",
-      engagement: { likes: 2103, comments: 156, shares: 67 },
-      date: "1 week ago",
-      category: "Fashion"
-    },
-    {
-      id: 3,
-      type: 'reel',
-      thumbnail: "/images/lorena-reels/3.MOV",
-      title: "Brand Partnership Reel",
-      brand: "Beauty Brand",
-      engagement: { likes: 2567, comments: 189, shares: 78 },
-      date: "2 weeks ago",
-      category: "Beauty"
-    },
-    {
-      id: 4,
-      type: 'reel',
-      thumbnail: "/images/lorena-reels/4.MOV",
-      title: "Lifestyle Reel Content",
-      brand: "Wellness Brand",
-      engagement: { likes: 3124, comments: 234, shares: 89 },
-      date: "3 weeks ago",
-      category: "Wellness"
-    }
-  ]
 
-  const highlights = [
-    { id: 1, title: "Brand Collabs", thumbnail: "/api/placeholder/80/80", count: 12 },
-    { id: 2, title: "Behind Scenes", thumbnail: "/api/placeholder/80/80", count: 8 },
-    { id: 3, title: "Personal", thumbnail: "/api/placeholder/80/80", count: 15 },
-    { id: 4, title: "Work Process", thumbnail: "/api/placeholder/80/80", count: 6 }
-  ]
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-yellow-100 via-yellow-100 to-pink-50" style={{
@@ -421,31 +267,10 @@ const UGCProfile = () => {
             </motion.p>
           </motion.div>
 
-          {/* Content Tabs */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-gray-100 rounded-full p-2">
-              {[
-                { id: 'posts', label: 'Posts', count: posts.length },
-                { id: 'reels', label: 'Reels', count: reels.length }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
-                    activeTab === tab.id
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  {tab.label} ({tab.count})
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* Content Grid */}
-          <div className={`grid gap-6 ${activeTab === 'posts' ? 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : 'grid-cols-2 md:grid-cols-2 lg:grid-cols-4'}`}>
-            {(activeTab === 'posts' ? posts : reels).map((post, index) => (
+          <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {posts.map((post, index) => (
               <motion.div
                 key={post.id}
                 initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
@@ -462,57 +287,14 @@ const UGCProfile = () => {
                   transition: { duration: 0.3 }
                 }}
                 className="relative group cursor-pointer"
-                onClick={() => setSelectedPost(post)}
               >
-                {activeTab === 'posts' ? (
-                  <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden">
-                    <img 
-                      src={post.thumbnail} 
-                      alt={post.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.5rem] p-1 shadow-2xl mx-auto" style={{ width: '180px', height: '360px' }}>
-                    <div className="w-full h-full bg-black rounded-[2rem] overflow-hidden relative">
-                      <video 
-                        src={post.thumbnail} 
-                        className="w-full h-full object-cover cursor-pointer"
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          const video = e.target as HTMLVideoElement
-                          if (playingVideo === post.id) {
-                            video.pause()
-                            setPlayingVideo(null)
-                          } else {
-                            // Pause all other videos
-                            document.querySelectorAll('video').forEach(v => (v as HTMLVideoElement).pause())
-                            video.play()
-                            setPlayingVideo(post.id)
-                          }
-                        }}
-                      />
-                      {/* iPhone 17 Dynamic Island */}
-                      <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-16 h-6 bg-black rounded-full">
-                        <div className="absolute top-1.5 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-gray-400 rounded-full"></div>
-                        <div className="absolute top-1.5 right-2 w-0.5 h-0.5 bg-gray-300 rounded-full"></div>
-                      </div>
-                      {/* iPhone 17 Action Button */}
-                      <div className="absolute top-8 right-0.5 w-0.5 h-6 bg-gray-500 rounded-full"></div>
-                      {/* iPhone 17 Volume Buttons */}
-                      <div className="absolute top-16 right-0 w-0.5 h-4 bg-gray-500 rounded-full"></div>
-                      <div className="absolute top-20 right-0 w-0.5 h-4 bg-gray-500 rounded-full"></div>
-                      {/* iPhone 17 Power Button */}
-                      <div className="absolute top-24 right-0 w-0.5 h-6 bg-gray-500 rounded-full"></div>
-                      {/* iPhone 17 Home Indicator */}
-                      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-white/20 rounded-full"></div>
-                    </div>
-                  </div>
-                )}
+                <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden">
+                  <img 
+                    src={post.thumbnail} 
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 
               </motion.div>
             ))}
