@@ -173,7 +173,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <main>{children}</main>
-        <Footer />
       </body>
     </html>
   )

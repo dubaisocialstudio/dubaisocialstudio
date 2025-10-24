@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Mail, MapPin, Send, Instagram, Camera, Target, Palette, Users, Monitor } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
@@ -16,11 +16,34 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
+  // Handle URL parameters for auto-filling form
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      const service = urlParams.get('service')
+      if (service) {
+        setFormData(prev => ({ ...prev, service }))
+      }
+      
+      // Also handle hash navigation to contact section
+      if (window.location.hash === '#contact') {
+        // Scroll to contact section
+        setTimeout(() => {
+          const contactSection = document.getElementById('contact')
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      }
+    }
+  }, [])
+
   const services = [
     { id: 'starter', label: 'Starter Package (4 Reels, 10 Photos)', icon: Camera },
     { id: 'premium', label: 'Premium Package (8 Reels, 20 Photos)', icon: Target },
     { id: 'website', label: 'Website Design Package (AED 5,000)', icon: Monitor },
     { id: 'custom', label: 'Custom Package', icon: Palette },
+    { id: 'ugc-profile', label: 'UGC Profile Creation', icon: Users },
     { id: 'content', label: 'Content Creation', icon: Camera },
     { id: 'strategy', label: 'Instagram & Social Media Strategy', icon: Target },
     { id: 'brand', label: 'Brand Aesthetic & Storytelling', icon: Palette },
