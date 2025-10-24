@@ -27,11 +27,8 @@ const UGCProfile = () => {
     { id: 1, type: 'post', thumbnail: "/images/lorena-portfolio/1.JPG", title: "Brand Collaboration" },
     { id: 2, type: 'post', thumbnail: "/images/lorena-portfolio/2.JPG", title: "Content Creation" },
     { id: 3, type: 'post', thumbnail: "/images/lorena-portfolio/3.JPG", title: "UGC Content" },
-    { id: 4, type: 'post', thumbnail: "/images/lorena-portfolio/4.JPG", title: "Brand Partnership" },
-    { id: 5, type: 'post', thumbnail: "/images/lorena-portfolio/5.JPG", title: "Content Strategy" },
     { id: 6, type: 'post', thumbnail: "/images/lorena-portfolio/6.JPG", title: "Travel Content" },
-    { id: 7, type: 'post', thumbnail: "/images/lorena-portfolio/7.JPG", title: "Lifestyle Content" },
-    { id: 8, type: 'post', thumbnail: "/images/lorena-portfolio/8.JPG", title: "Brand Campaign" }
+    { id: 7, type: 'post', thumbnail: "/images/lorena-portfolio/7.JPG", title: "Lifestyle Content" }
   ]
 
 
