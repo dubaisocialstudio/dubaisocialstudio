@@ -164,14 +164,14 @@ const UGCProfile = () => {
             ].map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.5, 
+                  duration: 0.6, 
                   delay: index * 0.1,
                   ease: "easeOut"
                 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-100px" }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
               >
                 <div className="text-6xl font-bold text-gray-100 mb-4 group-hover:text-pink-100 transition-colors">
