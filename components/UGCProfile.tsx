@@ -39,7 +39,7 @@ const UGCProfile = () => {
     }}>
 
       {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
+      <div className="relative h-screen sm:h-screen md:h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
         backgroundImage: "url('/images/lorena-hero/LORENAHERO.JPG')"
       }}>
         {/* Photo overlay for text readability */}
@@ -48,7 +48,7 @@ const UGCProfile = () => {
         
         
         {/* Content - Bottom Third */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-8 md:pb-16 lg:pb-24">
+        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-4 sm:pb-6 md:pb-16 lg:pb-24">
           {/* Name with typewriter effect */}
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
@@ -57,7 +57,7 @@ const UGCProfile = () => {
             className="space-y-2 md:space-y-4"
           >
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight"
+              className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -70,7 +70,7 @@ const UGCProfile = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold"
+              className="text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl font-semibold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
