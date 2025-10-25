@@ -172,7 +172,7 @@ const UGCProfile = () => {
                   ease: "easeOut"
                 }}
                 viewport={{ once: true }}
-                className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/30 hover:shadow-xl hover:bg-white/80 transition-all duration-300 group cursor-pointer"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
               >
                 <div className="text-6xl font-bold text-gray-100 mb-4 group-hover:text-pink-100 transition-colors">
                   {service.number}
