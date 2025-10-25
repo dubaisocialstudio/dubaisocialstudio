@@ -39,7 +39,7 @@ const UGCProfile = () => {
     }}>
 
       {/* Hero Section */}
-      <div className="relative h-screen sm:h-screen md:h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
+      <div className="relative h-[80vh] sm:h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
         backgroundImage: "url('/images/lorena-hero/LORENAHERO.JPG')"
       }}>
         {/* Photo overlay for text readability */}
