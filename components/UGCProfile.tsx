@@ -39,48 +39,13 @@ const UGCProfile = () => {
     }}>
 
       {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat" style={{
+      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
         backgroundImage: "url('/images/lorena-hero/LORENAHERO.JPG')"
       }}>
         {/* Photo overlay for text readability */}
         <div className="absolute inset-0 bg-black/20"></div>
         
-        {/* Instagram icon - inside pastel ball */}
-        <motion.div
-          className="absolute top-20 left-10 w-20 h-20 flex items-center justify-center z-20"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 1.5 }}
-        >
-          <a
-            href="https://instagram.com/lorenarsan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform duration-300"
-          >
-            <Instagram className="w-8 h-8 text-white" />
-          </a>
-        </motion.div>
         
-        {/* Animated background shapes */}
-        <motion.div 
-          className="absolute top-20 left-10 w-20 h-20 bg-pink-200 rounded-full opacity-60"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-32 h-32 bg-purple-200 rounded-full opacity-40"
-          initial={{ scale: 0, rotate: 180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
-        />
-        <motion.div 
-          className="absolute top-1/2 right-20 w-16 h-16 bg-blue-200 rounded-full opacity-50"
-          initial={{ scale: 0, y: -50 }}
-          animate={{ scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-        />
         
         {/* Content - Bottom Third */}
         <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-8 md:pb-16 lg:pb-24">
