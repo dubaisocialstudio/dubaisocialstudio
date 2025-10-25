@@ -31,8 +31,6 @@ const UGCProfile = () => {
     { id: 7, type: 'post', thumbnail: "/images/lorena-portfolio/7.JPG", title: "Lifestyle Content" }
   ]
 
-
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-yellow-100 via-yellow-100 to-pink-50" style={{
       background: 'linear-gradient(to bottom, #fefce8 0%, #fef3c7 20%, #fef3c7 35%, #fce7f3 100%)'
