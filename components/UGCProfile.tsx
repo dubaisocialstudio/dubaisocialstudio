@@ -179,7 +179,7 @@ const UGCProfile = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
