@@ -166,17 +166,18 @@ const UGCProfile = () => {
             ].map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ 
-                  duration: 0.4, 
-                  delay: index * 0.05,
-                  ease: "easeInOut"
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
                 }}
                 viewport={{ once: true }}
                 whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
+                  scale: 1.05, 
+                  rotate: 2,
+                  transition: { duration: 0.3 }
                 }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/30 hover:shadow-xl hover:bg-white/80 transition-all duration-300 group cursor-pointer"
               >
