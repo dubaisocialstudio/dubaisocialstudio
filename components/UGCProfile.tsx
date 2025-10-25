@@ -162,8 +162,16 @@ const UGCProfile = () => {
                 features: ["Research & Insights", "Purpose, Mission, Vision", "Value Propositions", "Brand Voice", "Verbal Identity", "Personality Traits"]
               }
             ].map((service, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true }}
                 className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-white/30 hover:shadow-xl hover:bg-white/80 transition-all duration-300 group cursor-pointer"
               >
                 <div className="text-6xl font-bold text-gray-100 mb-4 group-hover:text-pink-100 transition-colors">
@@ -179,7 +187,7 @@ const UGCProfile = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
