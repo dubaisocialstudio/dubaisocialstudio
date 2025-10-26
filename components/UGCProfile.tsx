@@ -26,6 +26,23 @@ const UGCProfile = () => {
   // State for portfolio tabs and video playback
   const [activeTab, setActiveTab] = useState('posts')
   const [playingVideo, setPlayingVideo] = useState<number | null>(null)
+  const [videosLoaded, setVideosLoaded] = useState<Set<number>>(new Set())
+
+  // Load videos in background when reels tab is clicked
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab)
+    if (tab === 'reels') {
+      // Preload all videos when reels tab is clicked
+      reels.forEach((reel) => {
+        const video = document.createElement('video')
+        video.src = reel.thumbnail
+        video.preload = 'metadata'
+        video.onloadedmetadata = () => {
+          setVideosLoaded(prev => new Set(prev).add(reel.id))
+        }
+      })
+    }
+  }
 
   // Portfolio photos
   const posts = [
@@ -240,7 +257,7 @@ const UGCProfile = () => {
           <div className="flex justify-center mb-12">
             <div className="flex bg-white/20 backdrop-blur-sm rounded-full p-2">
               <button
-                onClick={() => setActiveTab('posts')}
+                onClick={() => handleTabChange('posts')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'posts'
                     ? 'bg-white text-gray-900 shadow-lg'
@@ -250,7 +267,7 @@ const UGCProfile = () => {
                 Posts
               </button>
               <button
-                onClick={() => setActiveTab('reels')}
+                onClick={() => handleTabChange('reels')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'reels'
                     ? 'bg-white text-gray-900 shadow-lg'
@@ -300,7 +317,7 @@ const UGCProfile = () => {
                           muted
                           loop
                           playsInline
-                          preload="metadata"
+                          preload={videosLoaded.has(item.id) ? "metadata" : "none"}
                           onClick={(e) => {
                             const video = e.target as HTMLVideoElement
                             if (playingVideo === item.id) {
