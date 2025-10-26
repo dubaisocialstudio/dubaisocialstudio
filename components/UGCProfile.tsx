@@ -5,7 +5,8 @@ import { motion } from 'framer-motion'
 import { 
   Instagram,
   Mail,
-  Users
+  Users,
+  Video
 } from 'lucide-react'
 
 const UGCProfile = () => {
@@ -22,6 +23,10 @@ const UGCProfile = () => {
     }
   }
 
+  // State for portfolio tabs and video playback
+  const [activeTab, setActiveTab] = useState('posts')
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null)
+
   // Portfolio photos
   const posts = [
     { id: 1, type: 'post', thumbnail: "/images/lorena-portfolio/1.JPG", title: "Brand Collaboration" },
@@ -32,6 +37,13 @@ const UGCProfile = () => {
     { id: 6, type: 'post', thumbnail: "/images/lorena-portfolio/6.JPG", title: "Travel Content" },
     { id: 7, type: 'post', thumbnail: "/images/lorena-portfolio/7.JPG", title: "Lifestyle Content" },
     { id: 8, type: 'post', thumbnail: "/images/lorena-portfolio/8.JPG", title: "Wellness Content" }
+  ]
+
+  const reels = [
+    { id: 1, type: 'reel', thumbnail: "/images/lorena-reels/1.MOV", title: "Reel 1" },
+    { id: 2, type: 'reel', thumbnail: "/images/lorena-reels/2.MOV", title: "Reel 2" },
+    { id: 3, type: 'reel', thumbnail: "/images/lorena-reels/3.MOV", title: "Reel 3" },
+    { id: 4, type: 'reel', thumbnail: "/images/lorena-reels/4.MOV", title: "Reel 4" }
   ]
 
   return (
@@ -224,12 +236,37 @@ const UGCProfile = () => {
             </motion.p>
           </motion.div>
 
+          {/* Portfolio Tabs */}
+          <div className="flex justify-center mb-12">
+            <div className="flex bg-white/20 backdrop-blur-sm rounded-full p-2">
+              <button
+                onClick={() => setActiveTab('posts')}
+                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  activeTab === 'posts'
+                    ? 'bg-white text-gray-900 shadow-lg'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Posts
+              </button>
+              <button
+                onClick={() => setActiveTab('reels')}
+                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  activeTab === 'reels'
+                    ? 'bg-white text-gray-900 shadow-lg'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Reels
+              </button>
+            </div>
+          </div>
 
           {/* Content Grid */}
-          <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {posts.map((post, index) => (
+          <div className={`grid gap-6 ${activeTab === 'reels' ? 'grid-cols-2 md:grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}`}>
+            {(activeTab === 'posts' ? posts : reels).map((item, index) => (
               <motion.div
-                key={post.id}
+                key={item.id}
                 initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ 
@@ -245,13 +282,50 @@ const UGCProfile = () => {
                 }}
                 className="relative group cursor-pointer"
               >
-                <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden">
-                  <img 
-                    src={post.thumbnail} 
-                    alt={post.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                {activeTab === 'reels' ? (
+                  <div className="relative mx-auto" style={{ width: '200px', height: '400px' }}>
+                    {/* iPhone Frame - Black bezels */}
+                    <div className="bg-black rounded-[2rem] p-1">
+                      {/* Screen - White background */}
+                      <div className="bg-white rounded-[1.8rem] overflow-hidden relative" style={{ height: '380px' }}>
+                        {/* Dynamic Island - Black pill shape */}
+                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-14 h-6 bg-black rounded-full z-10">
+                          <div className="w-1 h-1 bg-blue-600 rounded-full absolute top-2 right-3"></div>
+                        </div>
+                        
+                        {/* Video Content */}
+                        <video
+                          src={item.thumbnail}
+                          className="w-full h-full object-cover cursor-pointer"
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          onClick={(e) => {
+                            const video = e.target as HTMLVideoElement
+                            if (playingVideo === item.id) {
+                              video.pause()
+                              setPlayingVideo(null)
+                            } else {
+                              // Pause all other videos
+                              document.querySelectorAll('video').forEach(v => v.pause())
+                              video.play()
+                              setPlayingVideo(item.id)
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="aspect-square bg-gray-100 rounded-2xl overflow-hidden">
+                    <img 
+                      src={item.thumbnail} 
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
                 
               </motion.div>
             ))}
