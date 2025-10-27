@@ -394,6 +394,126 @@ const UGCProfile = () => {
           </div>
         </motion.div>
 
+        {/* Brand Partners Section */}
+        <motion.div 
+          className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl border border-white/20 mt-12 md:mt-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-gray-900 mb-8 text-center"
+          >
+            Brand Partners
+          </motion.h2>
+          
+          <div className="overflow-hidden px-2">
+            <div className="flex gap-4 md:gap-6" style={{ animation: 'scroll 30s linear infinite', width: 'max-content' }}>
+              {/* Brand icons */}
+              {[
+                'BELLABARNETT.PNG',
+                'CENTER BARRE.PNG',
+                'HONEYB.PNG',
+                'IMG_8892.PNG',
+                'IMG_8895.PNG',
+                'IMG_8896.PNG',
+                'IMG_8897.PNG',
+                'INI VIE.PNG',
+                'KALIBTKALI.PNG',
+                'KISSNTHRILL.PNG',
+                'loavies.PNG',
+                'MAGICHILLS.PNG',
+                'MEWMEWs.PNG',
+                'MISLA.PNG',
+                'NP.PNG',
+                'OHPOLLY.PNG',
+                'ONEEMPIRE.PNG',
+                'SHEIN.PNG',
+                'SKINLYFT.PNG'
+              ].map((filename) => (
+                <div key={filename} className="flex-shrink-0">
+                  <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex-shrink-0">
+                    <img 
+                      src={`/images/lorena-brands/${filename}`} 
+                      alt={filename.replace('.PNG', '')}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+              {/* Duplicate for seamless scroll */}
+              {[
+                'BELLABARNETT.PNG',
+                'CENTER BARRE.PNG',
+                'HONEYB.PNG',
+                'IMG_8892.PNG',
+                'IMG_8895.PNG',
+                'IMG_8896.PNG',
+                'IMG_8897.PNG',
+                'INI VIE.PNG',
+                'KALIBTKALI.PNG',
+                'KISSNTHRILL.PNG',
+                'loavies.PNG',
+                'MAGICHILLS.PNG',
+                'MEWMEWs.PNG',
+                'MISLA.PNG',
+                'NP.PNG',
+                'OHPOLLY.PNG',
+                'ONEEMPIRE.PNG',
+                'SHEIN.PNG',
+                'SKINLYFT.PNG'
+              ].map((filename) => (
+                <div key={`dup-${filename}`} className="flex-shrink-0">
+                  <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex-shrink-0">
+                    <img 
+                      src={`/images/lorena-brands/${filename}`} 
+                      alt={filename.replace('.PNG', '')}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+              {/* Third set for ultra-smooth scrolling */}
+              {[
+                'BELLABARNETT.PNG',
+                'CENTER BARRE.PNG',
+                'HONEYB.PNG',
+                'IMG_8892.PNG',
+                'IMG_8895.PNG',
+                'IMG_8896.PNG',
+                'IMG_8897.PNG',
+                'INI VIE.PNG',
+                'KALIBTKALI.PNG',
+                'KISSNTHRILL.PNG',
+                'loavies.PNG',
+                'MAGICHILLS.PNG',
+                'MEWMEWs.PNG',
+                'MISLA.PNG',
+                'NP.PNG',
+                'OHPOLLY.PNG',
+                'ONEEMPIRE.PNG',
+                'SHEIN.PNG',
+                'SKINLYFT.PNG'
+              ].map((filename) => (
+                <div key={`dup2-${filename}`} className="flex-shrink-0">
+                  <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex-shrink-0">
+                    <img 
+                      src={`/images/lorena-brands/${filename}`} 
+                      alt={filename.replace('.PNG', '')}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
         {/* Why Me Section */}
         <motion.div 
           className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl border border-white/20 mt-12 md:mt-16"
