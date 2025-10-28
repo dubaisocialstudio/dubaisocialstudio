@@ -301,12 +301,25 @@ const UGCProfile = () => {
                         {/* Video Content */}
                         <video
                           src={item.thumbnail}
-                          className="w-full h-full object-cover cursor-pointer"
+                          className="w-full h-full object-cover cursor-pointer opacity-0 transition-opacity duration-300"
                           muted
                           loop
                           playsInline
-                          autoPlay
-                          preload="auto"
+                          preload="metadata"
+                          onLoadedData={(e) => {
+                            const v = e.target as HTMLVideoElement
+                            // Briefly play then pause to paint first frame on iOS/Safari
+                            const startPreview = async () => {
+                              try {
+                                await v.play()
+                              } catch (_) {}
+                              v.pause()
+                              v.currentTime = 0
+                              // Fade in
+                              v.style.opacity = '1'
+                            }
+                            startPreview()
+                          }}
                           onClick={(e) => {
                             const video = e.target as HTMLVideoElement
                             if (playingVideo === item.id) {
