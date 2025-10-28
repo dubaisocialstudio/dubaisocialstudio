@@ -52,7 +52,7 @@ const UGCProfile = () => {
     }}>
 
       {/* Hero Section */}
-      <div className="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
+      <div className="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom rounded-b-3xl md:rounded-b-none" style={{
         backgroundImage: "url('/images/lorena-hero/LORENAHERO.JPG')"
       }}>
         {/* Mobile Hero Image */}
