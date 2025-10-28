@@ -301,25 +301,12 @@ const UGCProfile = () => {
                         {/* Video Content */}
                         <video
                           src={item.thumbnail}
-                          className="w-full h-full object-cover cursor-pointer opacity-0 transition-opacity duration-300"
+                          className="w-full h-full object-cover cursor-pointer"
                           muted
                           loop
                           playsInline
-                          preload="metadata"
-                          onLoadedData={(e) => {
-                            const v = e.target as HTMLVideoElement
-                            // Briefly play then pause to paint first frame on iOS/Safari
-                            const startPreview = async () => {
-                              try {
-                                await v.play()
-                              } catch (_) {}
-                              v.pause()
-                              v.currentTime = 0
-                              // Fade in
-                              v.style.opacity = '1'
-                            }
-                            startPreview()
-                          }}
+                          autoPlay
+                          preload="auto"
                           onClick={(e) => {
                             const video = e.target as HTMLVideoElement
                             if (playingVideo === item.id) {
@@ -414,7 +401,7 @@ const UGCProfile = () => {
 
         {/* Brand Partners Section */}
         <motion.div 
-          className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl border border-white/20 mt-12 md:mt-16"
+          className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 mt-12 md:mt-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -425,12 +412,12 @@ const UGCProfile = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 mb-8 text-center"
+            className="text-3xl font-bold text-gray-900 mb-8 text-center px-6 sm:px-8 md:px-12 pt-6 sm:pt-8 md:pt-12"
           >
             Brand Partners
           </motion.h2>
           
-          <div className="overflow-hidden px-2">
+          <div className="overflow-hidden pb-6 sm:pb-8 md:pb-12">
             <div className="flex gap-4 md:gap-6" style={{ animation: 'scroll 30s linear infinite', width: 'max-content' }}>
               {/* Brand icons */}
               {[
