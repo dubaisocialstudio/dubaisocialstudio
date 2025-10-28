@@ -55,6 +55,11 @@ const UGCProfile = () => {
       <div className="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
         backgroundImage: "url('/images/lorena-hero/LORENAHERO.JPG')"
       }}>
+        {/* Mobile Hero Image */}
+        <div className="md:hidden absolute inset-0 bg-cover bg-center" style={{
+          backgroundImage: "url('/images/lorena-hero-mobile/FullSizeRender_VSCO.jpg')"
+        }}></div>
+        
         {/* Photo overlay for text readability */}
         <div className="absolute inset-0 bg-black/20"></div>
         
