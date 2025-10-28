@@ -52,7 +52,7 @@ const UGCProfile = () => {
     }}>
 
       {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
+      <div className="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-bottom bg-no-repeat md:bg-bottom" style={{
         backgroundImage: "url('/images/lorena-hero/LORENAHERO.JPG')"
       }}>
         {/* Mobile Hero Image */}
@@ -66,7 +66,7 @@ const UGCProfile = () => {
         
         
         {/* Content - Bottom Third */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-16 md:pb-16 lg:pb-24">
+        <div className="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-40 md:pb-16 lg:pb-24">
           {/* Name with typewriter effect */}
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
@@ -104,7 +104,7 @@ const UGCProfile = () => {
 
         {/* Animated scroll indicator */}
         <motion.div
-          className="absolute bottom-16 md:bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-24 md:bottom-8 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 3 }}
